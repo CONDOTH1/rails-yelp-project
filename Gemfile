@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'haml'
+gem 'devise'
 
 
 group :development, :test do
@@ -47,6 +48,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'capybara'
 end
