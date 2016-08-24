@@ -48,23 +48,24 @@ feature 'When user signed in' do
 
   context 'viewing restaurants' do
 
-      let!(:kfc){Restaurant.create(name: 'KFC')}
+    # let!(:kfc){Restaurant.create(name: 'KFC', user_id: 1)}
 
       scenario 'let a user view a restaurant' do
+        create_restaurant
         visit '/restaurants'
         click_link 'KFC'
         expect(page).to have_content 'KFC'
-        expect(current_path).to eq "/restaurants/#{kfc.id}"
+        # expect(current_path).to eq "/restaurants/#{kfc.id}"
       end
   end
 
   context 'editing restaurants' do
 
-    before {Restaurant.create name: 'KFC', description: 'Deep fried goodness'}
+    # before {Restaurant.create name: 'KFC', description: 'Deep fried goodness'}
 
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'
-      sign_up
+      create_restaurant
       click_link 'Edit'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       fill_in 'Description', with: 'Deep fried goodness'
@@ -75,7 +76,7 @@ feature 'When user signed in' do
     end
 
     scenario 'removes a restaurant when a user clicks a delete link'do
-      sign_up
+      create_restaurant
       click_link 'Delete'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content 'Restaurant deleted successfully'

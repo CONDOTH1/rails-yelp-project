@@ -1,10 +1,8 @@
 require 'rails_helper'
 require './spec/web_helper'
 feature 'reviewing' do
-  before { Restaurant.create name: 'KFC' }
-
   scenario 'allows users to leave a review using a form' do
-    sign_up
+    create_restaurant
     click_link 'Make Review'
     fill_in "Thoughts", with: "so so"
     select '3', from: 'Rating'
