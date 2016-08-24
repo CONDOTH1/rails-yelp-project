@@ -27,7 +27,8 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   # config.omniauth :facebook, "FACEBOOK_APP_ID", "FACEBOOK_APP_SECRET",
   config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret
-
+  p Rails.application.secrets.facebook_app_id
+  p Rails.application.secrets.facebook_app_secret
   # callback_url: "CALLBACK_URL"
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
