@@ -10,10 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
-<<<<<<< HEAD
-=======
     Rails.logger.info(@user.errors.inspect)
->>>>>>> a98143e1602e2b76a0b3d21c1c0fdaf64fcddc7c
   end
 
   def failure
