@@ -2,9 +2,7 @@ require 'rails_helper'
 require './spec/web_helper'
 
 feature 'restaurants' do
-
   context 'no restaurants have been added' do
-
     scenario 'should display a prompt to add a restaurant' do
       visit '/restaurants'
       expect(page).to have_content 'No restaurants yet'
@@ -19,11 +17,8 @@ feature 'restaurants' do
   end
 end
 
-
 feature 'When user signed in' do
-
   context 'creating restaurants' do
-
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
       sign_up
       click_link 'Add a restaurant'
@@ -35,7 +30,6 @@ feature 'When user signed in' do
   end
 
   context 'an invalid restaurant' do
-
     it 'does not let you submit a name that is too short' do
       sign_up
       click_link 'Add a restaurant'
@@ -47,22 +41,15 @@ feature 'When user signed in' do
   end
 
   context 'viewing restaurants' do
-
-    # let!(:kfc){Restaurant.create(name: 'KFC', user_id: 1)}
-
       scenario 'let a user view a restaurant' do
         create_restaurant
         visit '/restaurants'
         click_link 'KFC'
         expect(page).to have_content 'KFC'
-        # expect(current_path).to eq "/restaurants/#{kfc.id}"
       end
   end
 
   context 'editing restaurants' do
-
-    # before {Restaurant.create name: 'KFC', description: 'Deep fried goodness'}
-
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'
       create_restaurant

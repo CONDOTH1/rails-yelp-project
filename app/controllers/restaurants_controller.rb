@@ -20,7 +20,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-
   def destroy
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
@@ -41,7 +40,6 @@ class RestaurantsController < ApplicationController
     @restaurant.update(restaurant_params)
     redirect_to '/restaurants'
   end
-
 
   private
 

@@ -14,7 +14,7 @@ def log_in
 end
 
 def sign_out
-  click_link 'Sign out'
+  click_button 'Sign out'
 end
 
 def create_restaurant
