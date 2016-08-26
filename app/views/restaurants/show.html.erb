@@ -1,5 +1,6 @@
-<p> <%= @restaurant.name %> </p>
+<p><h2> <%= @restaurant.name %> </h2></p>
 <p> <%= @restaurant.description %> </p>
 <h4> <%= "#{@restaurant.name} Reviews" %> </h4>
-<% @reatuarant.reviews.each do |review| %>
-  <li> <%= review.throughts %> </li>
+<% @restaurant.reviews.each do |review| %>
+ <li> <%= review.thoughts %> </li>
+<% end %>

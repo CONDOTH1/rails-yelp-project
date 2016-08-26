@@ -1,18 +1,12 @@
 require 'rails_helper'
-require './spec/web_helper'
 
 feature 'restaurants' do
   context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
+      sign_up
       visit '/restaurants'
       expect(page).to have_content 'No restaurants yet'
       expect(page).to have_link 'Add a restaurant'
-    end
-
-    scenario 'Add a restaurant redirects to sign in if not already' do
-      visit '/restaurants'
-      click_link 'Add a restaurant'
-      expect(page).to have_content 'Log in'
     end
   end
 end
@@ -53,7 +47,7 @@ feature 'When user signed in' do
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'
       create_restaurant
-      click_link 'Edit'
+      click_link 'Edit KFC'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       fill_in 'Description', with: 'Deep fried goodness'
       click_button 'Update Restaurant'
@@ -68,6 +62,15 @@ feature 'When user signed in' do
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
+  end
+
+  scenario 'displays an average rating for all reviews' do
+    create_restaurant
+    leave_review('So so', '3')
+    sign_out
+    sign_up2
+    leave_review('Great', '5')
+    expect(page).to have_content('Average rating: ★★★★☆')
   end
 
 end
